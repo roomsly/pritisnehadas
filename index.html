@@ -1,0 +1,3177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pritisneha Das — Computer Science Engineering Student (2025 – 2029) at Dhemaji Engineering College (DEC), Assam. Portfolio showcasing distributed systems, backend architectures, and engineering projects.">
+  <meta name="author" content="Pritisneha Das">
+  <meta name="keywords" content="Pritisneha Das, Computer Science, Dhemaji Engineering College, DEC, Software Engineer, Portfolio, Assam, Systems Engineer, ASTU">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Pritisneha Das | CS Engineering Portfolio">
+  <meta property="og:description" content="Computer Science Engineering student (2025 – 2029) from Dhemaji Engineering College. Systems, backend engineering, and modern web architectures.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./avatar.jpg">
+
+  <title>Pritisneha Das | Computer Science & Engineering Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Favicon SVG -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <style>
+    /* ==========================================================================
+       DESIGN SYSTEM & CSS CUSTOM PROPERTIES
+       Derived from ui-ux-pro-max guidelines (Dark Mode OLED + Dev Precision)
+       ========================================================================== */
+    :root {
+      /* Colors */
+      --bg-canvas: #060911;
+      --bg-surface: #0c111d;
+      --bg-card: #121826;
+      --bg-card-hover: #172134;
+      --bg-elevated: #1a243a;
+      --bg-input: #090e18;
+      
+      --accent-cyan: #00f2fe;
+      --accent-cyan-rgb: 0, 242, 254;
+      --accent-green: #10b981;
+      --accent-green-rgb: 16, 185, 129;
+      --accent-purple: #8b5cf6;
+      --accent-amber: #f59e0b;
+      --accent-rose: #f43f5e;
+      
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+      --text-code: #38bdf8;
+      
+      --border-subtle: #1e293b;
+      --border-highlight: #334155;
+      --border-accent: rgba(0, 242, 254, 0.35);
+      
+      /* Typography */
+      --font-sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+      
+      /* Layout & Spacing Rhythm (8pt scale) */
+      --space-xs: 4px;
+      --space-sm: 8px;
+      --space-md: 16px;
+      --space-lg: 24px;
+      --space-xl: 32px;
+      --space-2xl: 48px;
+      --space-3xl: 64px;
+      --space-4xl: 96px;
+      
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-full: 9999px;
+      
+      --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+      --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.6);
+      --shadow-glow: 0 0 25px rgba(0, 242, 254, 0.15);
+      --shadow-glow-green: 0 0 25px rgba(16, 185, 129, 0.2);
+      
+      --transition-fast: 150ms cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-slow: 400ms cubic-bezier(0.16, 1, 0.3, 1);
+      
+      --nav-height: 72px;
+    }
+
+    /* Accessibility Reset & Base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      color-scheme: dark;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--bg-canvas);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      position: relative;
+    }
+
+    /* Selection */
+    ::selection {
+      background: rgba(var(--accent-cyan-rgb), 0.3);
+      color: #ffffff;
+    }
+
+    /* Focus States for WCAG 2.1 AA */
+    :focus-visible {
+      outline: 2px solid var(--accent-cyan);
+      outline-offset: 3px;
+    }
+
+    /* Interactive Background Canvas */
+    #bg-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.45;
+    }
+
+    /* Subtle Scanline Overlay */
+    .scanline-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(rgba(18, 24, 38, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.01), rgba(0, 255, 0, 0.005), rgba(0, 0, 255, 0.01));
+      background-size: 100% 4px, 6px 100%;
+      opacity: 0.35;
+    }
+
+    /* Skip Link for Accessibility */
+    .skip-link {
+      position: absolute;
+      top: -60px;
+      left: 20px;
+      background: var(--accent-cyan);
+      color: #000;
+      padding: 10px 18px;
+      font-weight: 700;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      border-radius: var(--radius-sm);
+      z-index: 9999;
+      transition: top var(--transition-fast);
+      text-decoration: none;
+    }
+    .skip-link:focus {
+      top: 20px;
+    }
+
+    /* Layout Containers */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 var(--space-lg);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Typography Utilities */
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--text-primary);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .font-mono {
+      font-family: var(--font-mono);
+    }
+
+    .text-cyan { color: var(--accent-cyan); }
+    .text-green { color: var(--accent-green); }
+    .text-purple { color: var(--accent-purple); }
+    .text-amber { color: var(--accent-amber); }
+    .text-muted { color: var(--text-muted); }
+    .text-secondary { color: var(--text-secondary); }
+
+    /* Section Styling */
+    section {
+      padding: var(--space-4xl) 0;
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: var(--space-3xl);
+      text-align: left;
+    }
+
+    .section-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-sm);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-cyan);
+      background: rgba(var(--accent-cyan-rgb), 0.08);
+      border: 1px solid rgba(var(--accent-cyan-rgb), 0.25);
+      padding: 6px 14px;
+      border-radius: var(--radius-full);
+      margin-bottom: var(--space-md);
+    }
+
+    .section-title {
+      font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+      margin-bottom: var(--space-md);
+      font-weight: 700;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1.125rem;
+      max-width: 680px;
+      line-height: 1.6;
+    }
+
+    /* ==========================================================================
+       NAVIGATION BAR
+       ========================================================================== */
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+      height: var(--nav-height);
+      background: rgba(6, 9, 17, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-subtle);
+      z-index: 100;
+      transition: background var(--transition-normal), border-color var(--transition-normal);
+    }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 100%;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text-primary);
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.01em;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, rgba(var(--accent-cyan-rgb), 0.2), rgba(var(--accent-green-rgb), 0.15));
+      border: 1px solid var(--accent-cyan);
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 700;
+      box-shadow: 0 0 12px rgba(var(--accent-cyan-rgb), 0.2);
+    }
+
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .brand-sub {
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      color: var(--accent-green);
+      letter-spacing: 0.05em;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      list-style: none;
+    }
+
+    .nav-link {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      transition: color var(--transition-fast);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 6px 0;
+      position: relative;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--accent-cyan);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent-cyan);
+      transition: width var(--transition-fast);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    /* Terminal Toggle & Status Pill */
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 5px 12px;
+      border-radius: var(--radius-full);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--accent-green);
+      white-space: nowrap;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--accent-green);
+      animation: pulse-glow 2s infinite ease-in-out;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .btn-terminal-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      color: var(--text-primary);
+      padding: 7px 14px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      min-height: 38px;
+    }
+
+    .btn-terminal-toggle:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      box-shadow: var(--shadow-glow);
+    }
+
+    /* Mobile Hamburger */
+    .mobile-nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      padding: 8px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      min-width: 44px;
+      min-height: 44px;
+    }
+
+    /* ==========================================================================
+       HERO SECTION
+       ========================================================================== */
+    .hero-section {
+      padding-top: calc(var(--space-4xl) + 16px);
+      padding-bottom: var(--space-4xl);
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.95fr;
+      gap: var(--space-3xl);
+      align-items: center;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .hero-pretitle {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .badge-terminal {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-highlight);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      color: var(--accent-code);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5.5vw, 4.25rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+    }
+
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #ffffff 30%, var(--accent-cyan) 85%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .hero-role {
+      font-family: var(--font-mono);
+      font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+      color: var(--accent-green);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+    }
+
+    .hero-role .typing-cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.2em;
+      background-color: var(--accent-green);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    .hero-description {
+      color: var(--text-secondary);
+      font-size: 1.15rem;
+      line-height: 1.7;
+      max-width: 620px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: var(--space-sm);
+    }
+
+    /* Common Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 24px;
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radius-sm);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      min-height: 48px; /* Touch target minimum */
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent-cyan);
+      color: #050b14;
+      border-color: var(--accent-cyan);
+      box-shadow: 0 4px 16px rgba(var(--accent-cyan-rgb), 0.35);
+    }
+    .btn-primary:hover {
+      background: #33f5fe;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 24px rgba(var(--accent-cyan-rgb), 0.5);
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border-color: var(--border-highlight);
+    }
+    .btn-secondary:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      background: var(--bg-card-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-secondary);
+      border-color: var(--border-subtle);
+    }
+    .btn-outline:hover {
+      color: var(--text-primary);
+      border-color: var(--border-highlight);
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .btn-sm {
+      padding: 8px 14px;
+      font-size: 0.8125rem;
+      min-height: 38px;
+    }
+
+    /* Hero Dev Card & Visual */
+    .hero-visual-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      box-shadow: var(--shadow-md);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .hero-visual-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green), var(--accent-purple));
+    }
+
+    .dev-profile-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+    }
+
+    .profile-avatar-wrapper {
+      position: relative;
+      width: 90px;
+      height: 90px;
+      flex-shrink: 0;
+    }
+
+    .profile-avatar-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-md);
+      border: 2px solid var(--border-highlight);
+      display: block;
+    }
+
+    .avatar-live-badge {
+      position: absolute;
+      bottom: -4px;
+      right: -4px;
+      width: 18px;
+      height: 18px;
+      background: var(--bg-surface);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-live-badge::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      background: var(--accent-green);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--accent-green);
+    }
+
+    .dev-profile-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .dev-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .dev-subinfo {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--accent-cyan);
+    }
+
+    .dev-location {
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* System Stats Grid in Dev Card */
+    .system-stats-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 4px;
+    }
+
+    .stat-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      transition: border-color var(--transition-fast);
+    }
+
+    .stat-box:hover {
+      border-color: var(--border-highlight);
+    }
+
+    .stat-label {
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    .stat-value {
+      font-family: var(--font-mono);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    /* Live Telemetry Bar inside Dev Card */
+    .telemetry-row {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .telemetry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+    }
+
+    .telemetry-progress-track {
+      width: 100%;
+      height: 6px;
+      background: var(--bg-input);
+      border-radius: var(--radius-full);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .telemetry-progress-fill {
+      height: 100%;
+      width: 88%;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-green));
+      border-radius: var(--radius-full);
+      transition: width 1s ease-out;
+    }
+
+    /* Live Clock Pill */
+    .live-clock-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--text-secondary);
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 12px;
+    }
+
+    /* ==========================================================================
+       INTERACTIVE CS TERMINAL / CLI COMPONENT
+       ========================================================================== */
+    .terminal-section {
+      padding-top: var(--space-3xl);
+      padding-bottom: var(--space-3xl);
+    }
+
+    .terminal-window {
+      background: #080d16;
+      border: 1px solid var(--border-highlight);
+      border-radius: var(--radius-md);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), var(--shadow-glow);
+      overflow: hidden;
+      font-family: var(--font-mono);
+    }
+
+    .terminal-header {
+      background: #0f1728;
+      border-bottom: 1px solid var(--border-subtle);
+      padding: 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+    }
+
+    .terminal-dots {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .t-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .t-dot-red { background: #ef4444; }
+    .t-dot-yellow { background: #f59e0b; }
+    .t-dot-green { background: #10b981; }
+
+    .terminal-title {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-shortcut-hint {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      border: 1px solid var(--border-subtle);
+      padding: 2px 6px;
+      border-radius: var(--radius-sm);
+    }
+
+    .terminal-body {
+      padding: var(--space-lg);
+      max-height: 480px;
+      min-height: 320px;
+      overflow-y: auto;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #e2e8f0;
+    }
+
+    .terminal-output {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: var(--space-md);
+    }
+
+    .terminal-line {
+      word-break: break-word;
+    }
+
+    .terminal-prompt {
+      color: var(--accent-green);
+      font-weight: 600;
+    }
+
+    .terminal-cmd {
+      color: #ffffff;
+      font-weight: 500;
+    }
+
+    .terminal-response {
+      color: var(--text-secondary);
+      margin-left: 4px;
+    }
+
+    .terminal-response.info {
+      color: var(--text-code);
+    }
+
+    .terminal-response.success {
+      color: var(--accent-green);
+    }
+
+    .terminal-response.error {
+      color: var(--accent-rose);
+    }
+
+    /* Terminal Input Line */
+    .terminal-input-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .terminal-input-prompt {
+      color: var(--accent-green);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .terminal-input-field {
+      flex: 1;
+      background: transparent;
+      border: none;
+      outline: none;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      caret-color: var(--accent-cyan);
+      padding: 4px 0;
+    }
+
+    /* Terminal Command Suggestions Chips */
+    .terminal-chips-bar {
+      padding: 10px 18px;
+      background: #090e1a;
+      border-top: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chips-label {
+      font-size: 0.725rem;
+      color: var(--text-muted);
+      font-family: var(--font-mono);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .cmd-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--accent-cyan);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+    }
+
+    .cmd-chip:hover {
+      border-color: var(--accent-cyan);
+      background: rgba(var(--accent-cyan-rgb), 0.1);
+      transform: translateY(-1px);
+    }
+
+    /* ==========================================================================
+       TECHNICAL SKILLS & CS COMPETENCIES MATRIX
+       ========================================================================== */
+    .skills-filter-nav {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .filter-btn {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      min-height: 40px;
+    }
+
+    .filter-btn:hover {
+      border-color: var(--border-highlight);
+      color: var(--text-primary);
+    }
+
+    .filter-btn.active {
+      background: rgba(var(--accent-cyan-rgb), 0.12);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: var(--space-lg);
+    }
+
+    .skill-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      position: relative;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--border-highlight);
+      box-shadow: var(--shadow-md);
+    }
+
+    .skill-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .skill-card-title-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .skill-card-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+    }
+
+    .skill-card-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .skill-badge-level {
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      padding: 3px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--accent-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .skill-tags-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-tag {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      font-family: var(--font-mono);
+      font-size: 0.78125rem;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-fast);
+    }
+
+    .skill-tag:hover {
+      border-color: var(--accent-cyan);
+      color: var(--text-primary);
+    }
+
+    .skill-description {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       FEATURED ENGINEERING PROJECTS
+       ========================================================================== */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: var(--space-2xl);
+    }
+
+    .project-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform var(--transition-normal), border-color var(--transition-normal), box-shadow var(--transition-normal);
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--border-highlight);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.6);
+    }
+
+    .project-media-wrap {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      background: #090e1a;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .project-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .project-card:hover .project-img {
+      transform: scale(1.04);
+    }
+
+    .project-category-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(6, 9, 17, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border-highlight);
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      color: var(--accent-cyan);
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      z-index: 2;
+    }
+
+    .project-body {
+      padding: var(--space-xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+      flex: 1;
+    }
+
+    .project-header-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .project-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .project-year {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .project-problem-text {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    /* Key Engineering Outcome Metrics Box */
+    .project-metrics-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8px;
+      text-align: center;
+    }
+
+    .metric-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .metric-value {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+
+    .metric-label {
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .project-tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .tech-pill {
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      color: var(--text-secondary);
+      background: var(--bg-canvas);
+      border: 1px solid var(--border-subtle);
+      padding: 3px 8px;
+      border-radius: var(--radius-sm);
+    }
+
+    .project-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: var(--space-sm);
+      padding-top: var(--space-md);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    /* ==========================================================================
+       INTERACTIVE CS ALGORITHM SANDBOX
+       ========================================================================== */
+    .algo-sandbox-container {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-highlight);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      box-shadow: var(--shadow-md);
+    }
+
+    .algo-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      margin-bottom: var(--space-xl);
+      padding-bottom: var(--space-md);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .algo-selector-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .algo-select {
+      background: var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      color: var(--text-primary);
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      padding: 8px 14px;
+      border-radius: var(--radius-sm);
+      outline: none;
+      cursor: pointer;
+    }
+
+    .algo-button-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .algo-canvas-wrapper {
+      background: #050811;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+      min-height: 240px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 6px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .algo-bar {
+      flex: 1;
+      max-width: 28px;
+      background: var(--accent-cyan);
+      border-radius: 4px 4px 0 0;
+      transition: height 0.15s ease, background-color 0.15s ease;
+      position: relative;
+    }
+
+    .algo-bar.active {
+      background: var(--accent-rose) !important;
+      box-shadow: 0 0 10px var(--accent-rose);
+    }
+
+    .algo-bar.sorted {
+      background: var(--accent-green) !important;
+      box-shadow: 0 0 8px var(--accent-green);
+    }
+
+    .algo-meta-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: var(--space-md);
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       EDUCATION & ACADEMIC BACKGROUND (Dhemaji Engineering College)
+       ========================================================================== */
+    .timeline-wrapper {
+      position: relative;
+      padding-left: 32px;
+    }
+
+    .timeline-wrapper::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 12px;
+      bottom: 12px;
+      width: 2px;
+      background: linear-gradient(180deg, var(--accent-cyan), var(--border-subtle));
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: var(--space-2xl);
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-marker {
+      position: absolute;
+      left: -32px;
+      top: 8px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--bg-canvas);
+      border: 3px solid var(--accent-cyan);
+      box-shadow: 0 0 10px rgba(var(--accent-cyan-rgb), 0.4);
+    }
+
+    .timeline-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: var(--space-xl);
+      transition: border-color var(--transition-fast);
+    }
+
+    .timeline-card:hover {
+      border-color: var(--border-highlight);
+    }
+
+    .timeline-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: var(--space-md);
+    }
+
+    .timeline-institution {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .timeline-degree {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--accent-cyan);
+      margin-top: 2px;
+    }
+
+    .timeline-period-badge {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      background: rgba(var(--accent-cyan-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-cyan-rgb), 0.3);
+      color: var(--accent-cyan);
+      padding: 4px 12px;
+      border-radius: var(--radius-full);
+    }
+
+    .timeline-location {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .coursework-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: var(--space-md);
+    }
+
+    .course-chip {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      padding: 5px 12px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+      color: var(--text-secondary);
+    }
+
+    /* ==========================================================================
+       CONTACT & OUTREACH SECTION
+       ========================================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: var(--space-2xl);
+    }
+
+    .contact-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: var(--space-2xl);
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+
+    .contact-info-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all var(--transition-fast);
+    }
+
+    .contact-item:hover {
+      border-color: var(--accent-cyan);
+      background: var(--bg-card-hover);
+      transform: translateX(4px);
+    }
+
+    .contact-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-sm);
+      background: rgba(var(--accent-cyan-rgb), 0.1);
+      border: 1px solid rgba(var(--accent-cyan-rgb), 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-cyan);
+      flex-shrink: 0;
+    }
+
+    .contact-text-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      flex: 1;
+    }
+
+    .contact-label {
+      font-family: var(--font-mono);
+      font-size: 0.725rem;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .contact-value {
+      font-family: var(--font-mono);
+      font-size: 0.9375rem;
+      font-weight: 500;
+      word-break: break-all;
+    }
+
+    .btn-copy-email {
+      background: transparent;
+      border: 1px solid var(--border-subtle);
+      color: var(--text-secondary);
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all var(--transition-fast);
+    }
+
+    .btn-copy-email:hover {
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+
+    /* Contact Form */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+    }
+
+    .form-input,
+    .form-textarea {
+      width: 100%;
+      background: var(--bg-input);
+      border: 1px solid var(--border-highlight);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 2px rgba(var(--accent-cyan-rgb), 0.15);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* ==========================================================================
+       TOAST NOTIFICATIONS
+       ========================================================================== */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      pointer-events: none;
+    }
+
+    .toast {
+      background: #0d1527;
+      border: 1px solid var(--accent-cyan);
+      color: var(--text-primary);
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      box-shadow: var(--shadow-md);
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity var(--transition-normal), transform var(--transition-normal);
+      pointer-events: auto;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ==========================================================================
+       FOOTER
+       ========================================================================== */
+    .footer {
+      border-top: 1px solid var(--border-subtle);
+      background: #04060b;
+      padding: var(--space-3xl) 0 var(--space-2xl);
+      color: var(--text-muted);
+      font-size: 0.875rem;
+    }
+
+    .footer-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: var(--space-lg);
+    }
+
+    .footer-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .footer-shortcuts-legend {
+      font-family: var(--font-mono);
+      font-size: 0.775rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .key-badge {
+      display: inline-block;
+      background: var(--bg-card);
+      border: 1px solid var(--border-highlight);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--text-primary);
+    }
+
+    /* ==========================================================================
+       RESPONSIVE BREAKPOINTS (375px, 768px, 1024px, 1440px)
+       ========================================================================== */
+    @media (max-width: 1024px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-2xl);
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero-visual-card {
+        max-width: 580px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      :root {
+        --space-4xl: 64px;
+      }
+
+      .nav-menu {
+        display: none;
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        background: #070b14;
+        border-bottom: 1px solid var(--border-subtle);
+        flex-direction: column;
+        padding: var(--space-lg);
+        gap: var(--space-md);
+      }
+
+      .nav-menu.open {
+        display: flex;
+      }
+
+      .mobile-nav-toggle {
+        display: block;
+      }
+
+      .status-pill {
+        display: none;
+      }
+
+      .system-stats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 var(--space-md);
+      }
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+      .hero-actions .btn {
+        width: 100%;
+      }
+      .system-stats-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Accessibility: Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+      #bg-canvas {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Accessible Skip Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Interactive Dynamic Background Canvas -->
+  <canvas id="bg-canvas"></canvas>
+  <div class="scanline-overlay" aria-hidden="true"></div>
+
+  <!-- ========================================================================
+       STICKY NAVIGATION BAR
+       ======================================================================== -->
+  <header class="navbar" role="banner">
+    <div class="container navbar-inner">
+      <a href="#" class="nav-brand" aria-label="Pritisneha Das Home">
+        <div class="brand-icon">PD</div>
+        <div class="brand-meta">
+          <span class="brand-title">Pritisneha Das</span>
+          <span class="brand-sub">CS.DEC'29 // ASTU</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav aria-label="Main Navigation">
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="#about" class="nav-link">~/about</a></li>
+          <li><a href="#skills" class="nav-link">~/skills</a></li>
+          <li><a href="#projects" class="nav-link">~/projects</a></li>
+          <li><a href="#algo-lab" class="nav-link">~/algo-lab</a></li>
+          <li><a href="#education" class="nav-link">~/education</a></li>
+          <li><a href="#contact" class="nav-link">~/contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Action Controls -->
+      <div class="nav-actions">
+        <div class="status-pill" title="Status: B.Tech Computer Science (2025 - 2029)">
+          <span class="status-dot"></span>
+          <span>BATCH 2025 – 2029</span>
+        </div>
+
+        <button class="btn-terminal-toggle" id="btn-toggle-terminal-nav" aria-label="Toggle Interactive CLI Terminal">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+          <span>CLI [T]</span>
+        </button>
+
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation Menu" aria-expanded="false">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ======================================================================
+         HERO SECTION
+         ====================================================================== -->
+    <section class="hero-section" id="about" aria-labelledby="hero-heading">
+      <div class="container hero-grid">
+        
+        <div class="hero-content">
+          <div class="hero-pretitle">
+            <span class="section-tag">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+              BATCH 2025 – 2029
+            </span>
+            <span class="badge-terminal">
+              <span>●</span> Dhemaji Engineering College (DEC)
+            </span>
+          </div>
+
+          <h1 class="hero-title" id="hero-heading">
+            Hi, I'm <span class="gradient-text">Pritisneha Das</span>.
+          </h1>
+
+          <div class="hero-role" aria-live="polite">
+            <span id="typing-text">Computer Science Engineer</span>
+            <span class="typing-cursor" aria-hidden="true"></span>
+          </div>
+
+          <p class="hero-description">
+            Computer Science & Engineering student at <strong>Dhemaji Engineering College (DEC)</strong>, Tezpur, Assam. 
+            Focused on building resilient distributed systems, high-throughput backend services, algorithmic problem-solving, 
+            and modern full-stack web applications.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+              <span>Explore Projects</span>
+            </a>
+
+            <button class="btn btn-secondary" id="btn-quick-terminal">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+              <span>Launch Terminal</span>
+            </button>
+
+            <button class="btn btn-outline" id="btn-copy-email-hero" title="Click to copy email">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy Email</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dev Profile Telemetry Card -->
+        <div class="hero-visual-card" aria-label="Engineer Profile Telemetry">
+          <div class="dev-profile-header">
+            <div class="profile-avatar-wrapper">
+              <img src="./avatar.jpg" alt="Pritisneha Das - Computer Science Engineer" class="profile-avatar-img" width="90" height="90">
+              <div class="avatar-live-badge" title="Active Core Engineer"></div>
+            </div>
+            <div class="dev-profile-meta">
+              <div class="dev-name">Pritisneha Das</div>
+              <div class="dev-subinfo">B.Tech CSE · Batch 2025 – 2029</div>
+              <div class="dev-location">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                <span>Tezpur, Assam, India</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic & System Stats Grid -->
+          <div class="system-stats-grid">
+            <div class="stat-box">
+              <span class="stat-label">Institution</span>
+              <span class="stat-value">DEC (Assam)</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Specialization</span>
+              <span class="stat-value text-cyan">Comp Science</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Primary Stack</span>
+              <span class="stat-value">C++ / Node / SQL</span>
+            </div>
+            <div class="stat-box">
+              <span class="stat-label">Graduation</span>
+              <span class="stat-value text-green">2025 – 2029</span>
+            </div>
+          </div>
+
+          <!-- Live Engineering Readiness Telemetry -->
+          <div class="telemetry-row">
+            <div class="telemetry-header">
+              <span>B.Tech Degree Program</span>
+              <span class="text-cyan">2025 – 2029</span>
+            </div>
+            <div class="telemetry-progress-track" aria-hidden="true">
+              <div class="telemetry-progress-fill" style="width: 25%;"></div>
+            </div>
+          </div>
+
+          <div class="live-clock-wrapper">
+            <span>Local Time (Assam, IST):</span>
+            <span id="live-ist-clock" class="text-cyan font-mono">--:--:-- IST</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         INTERACTIVE CS TERMINAL / CLI
+         ====================================================================== -->
+    <section class="terminal-section" id="cli-terminal" aria-labelledby="terminal-heading">
+      <div class="container">
+        <div class="terminal-window">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <span class="t-dot t-dot-red"></span>
+              <span class="t-dot t-dot-yellow"></span>
+              <span class="t-dot t-dot-green"></span>
+            </div>
+            <div class="terminal-title" id="terminal-heading">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
+              <span>pritisneha@dec-cs: ~/portfolio-v2.5</span>
+            </div>
+            <div class="terminal-actions">
+              <span class="terminal-shortcut-hint">Press [T] to focus</span>
+            </div>
+          </div>
+
+          <div class="terminal-body" id="terminal-screen" role="log" aria-live="polite">
+            <div class="terminal-output" id="terminal-output">
+              <div class="terminal-line text-cyan font-mono">
+                [SYSTEM BOOT] Pritisneha Das Engineering Terminal v2.5.0 initialized.
+              </div>
+              <div class="terminal-line text-secondary font-mono">
+                DEC node connection active. Type <span class="text-green">'help'</span> to see available commands or click the chips below.
+              </div>
+            </div>
+
+            <!-- Active Input Row -->
+            <div class="terminal-input-row">
+              <span class="terminal-input-prompt">pritisneha@dec-cs:~$</span>
+              <input type="text" id="terminal-input" class="terminal-input-field" autocomplete="off" spellcheck="false" aria-label="Terminal command input" placeholder="Type a command (e.g. 'help', 'skills', 'projects')...">
+            </div>
+          </div>
+
+          <!-- Quick Command Chips Bar -->
+          <div class="terminal-chips-bar">
+            <span class="chips-label">Quick run:</span>
+            <button class="cmd-chip" data-cmd="help">help</button>
+            <button class="cmd-chip" data-cmd="about">about</button>
+            <button class="cmd-chip" data-cmd="skills">skills</button>
+            <button class="cmd-chip" data-cmd="projects">projects</button>
+            <button class="cmd-chip" data-cmd="education">education</button>
+            <button class="cmd-chip" data-cmd="contact">contact</button>
+            <button class="cmd-chip" data-cmd="neofetch">neofetch</button>
+            <button class="cmd-chip" data-cmd="clear">clear</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CORE TECHNICAL COMPETENCIES / SKILLS MATRIX
+         ====================================================================== -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg>
+            TECHNICAL CAPABILITIES
+          </span>
+          <h2 class="section-title" id="skills-heading">CS Engineering Competencies</h2>
+          <p class="section-subtitle">
+            A comprehensive matrix of foundational computer science principles, programming languages, backend systems, and modern toolchains.
+          </p>
+        </div>
+
+        <!-- Filter Navigation -->
+        <div class="skills-filter-nav" role="tablist" aria-label="Skills Category Filter">
+          <button class="filter-btn active" data-category="all" role="tab" aria-selected="true">All Domains</button>
+          <button class="filter-btn" data-category="cs-core" role="tab" aria-selected="false">CS Foundations</button>
+          <button class="filter-btn" data-category="languages" role="tab" aria-selected="false">Languages</button>
+          <button class="filter-btn" data-category="backend" role="tab" aria-selected="false">Backend & Systems</button>
+          <button class="filter-btn" data-category="web" role="tab" aria-selected="false">Web & Frontend</button>
+          <button class="filter-btn" data-category="devops" role="tab" aria-selected="false">DevOps & Toolchain</button>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="skills-grid" id="skills-grid">
+          
+          <!-- Card 1: CS Foundations -->
+          <div class="skill-card" data-domain="cs-core">
+            <div class="skill-card-header">
+              <div class="skill-card-title-group">
+                <div class="skill-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <h3 class="skill-card-name">CS Fundamentals</h3>
+              </div>
+              <span class="skill-badge-level">Advanced</span>
+            </div>
+            <p class="skill-description">
+              Core theoretical foundations covering algorithmic complexity, system design, operating principles, and concurrent memory management.
+            </p>
+            <div class="skill-tags-list">
+              <span class="skill-tag">Data Structures & Algorithms</span>
+              <span class="skill-tag">Operating Systems</span>
+              <span class="skill-tag">DBMS & SQL Architecture</span>
+              <span class="skill-tag">Computer Networks (TCP/IP)</span>
+              <span class="skill-tag">Object-Oriented Design</span>
+            </div>
+          </div>
+
+          <!-- Card 2: Programming Languages -->
+          <div class="skill-card" data-domain="languages">
+            <div class="skill-card-header">
+              <div class="skill-card-title-group">
+                <div class="skill-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                </div>
+                <h3 class="skill-card-name">Languages & Runtimes</h3>
+              </div>
+              <span class="skill-badge-level">Proficient</span>
+            </div>
+            <p class="skill-description">
+              Multi-paradigm programming across strongly typed systems and high-level scripting languages for algorithmic and production workloads.
+            </p>
+            <div class="skill-tags-list">
+              <span class="skill-tag">C / C++ (STL)</span>
+              <span class="skill-tag">Python 3</span>
+              <span class="skill-tag">JavaScript (ES6+)</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">Java</span>
+              <span class="skill-tag">Bash / POSIX Shell</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Backend & Systems -->
+          <div class="skill-card" data-domain="backend">
+            <div class="skill-card-header">
+              <div class="skill-card-title-group">
+                <div class="skill-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+                </div>
+                <h3 class="skill-card-name">Backend & Systems</h3>
+              </div>
+              <span class="skill-badge-level">Core Focus</span>
+            </div>
+            <p class="skill-description">
+              Architecting resilient server endpoints, asynchronous task processing pipelines, distributed caching, and transactional database schemas.
+            </p>
+            <div class="skill-tags-list">
+              <span class="skill-tag">Node.js / Express</span>
+              <span class="skill-tag">RESTful API Design</span>
+              <span class="skill-tag">PostgreSQL & Indexing</span>
+              <span class="skill-tag">Redis Caching & Queues</span>
+              <span class="skill-tag">MongoDB</span>
+              <span class="skill-tag">WebSockets (Real-time)</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Web & Frontend -->
+          <div class="skill-card" data-domain="web">
+            <div class="skill-card-header">
+              <div class="skill-card-title-group">
+                <div class="skill-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                </div>
+                <h3 class="skill-card-name">Web & Frontend</h3>
+              </div>
+              <span class="skill-badge-level">Proficient</span>
+            </div>
+            <p class="skill-description">
+              Creating clean, highly accessible (WCAG 2.1 AA compliant), performant web user interfaces using native web standards and modern tooling.
+            </p>
+            <div class="skill-tags-list">
+              <span class="skill-tag">Modern HTML5 & CSS3</span>
+              <span class="skill-tag">React.js</span>
+              <span class="skill-tag">DOM & Web APIs</span>
+              <span class="skill-tag">Responsive Design Systems</span>
+              <span class="skill-tag">Web Performance Optimization</span>
+            </div>
+          </div>
+
+          <!-- Card 5: DevOps & Toolchain -->
+          <div class="skill-card" data-domain="devops">
+            <div class="skill-card-header">
+              <div class="skill-card-title-group">
+                <div class="skill-card-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                </div>
+                <h3 class="skill-card-name">DevOps & Toolchain</h3>
+              </div>
+              <span class="skill-badge-level">Applied</span>
+            </div>
+            <p class="skill-description">
+              Managing engineering environments, automated version control workflows, containerized service execution, and Linux server maintenance.
+            </p>
+            <div class="skill-tags-list">
+              <span class="skill-tag">Git & GitHub Actions</span>
+              <span class="skill-tag">Docker & Containerization</span>
+              <span class="skill-tag">Linux / Unix Administration</span>
+              <span class="skill-tag">Postman API Testing</span>
+              <span class="skill-tag">Vim & VS Code Setup</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         FEATURED ENGINEERING PROJECTS
+         ====================================================================== -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
+            SYSTEM ARCHITECTURE & PRODUCTION CODE
+          </span>
+          <h2 class="section-title" id="projects-heading">Featured Engineering Projects</h2>
+          <p class="section-subtitle">
+            Demonstrating problem-solving, architectural depth, benchmarked metrics, and production-grade implementations.
+          </p>
+        </div>
+
+        <div class="projects-grid">
+          
+          <!-- Project 1: NexusFlow -->
+          <article class="project-card">
+            <div class="project-media-wrap">
+              <span class="project-category-badge">Distributed Systems · Queue Engine</span>
+              <img src="./project-task-engine.jpg" alt="Nexus Flow Distributed Task & Event Pipeline Interface" class="project-img" loading="lazy">
+            </div>
+
+            <div class="project-body">
+              <div class="project-header-row">
+                <h3 class="project-title">NexusFlow — Distributed Task & Event Pipeline</h3>
+                <span class="project-year">2024–2025</span>
+              </div>
+
+              <p class="project-problem-text">
+                Designed an asynchronous event-driven task processing system capable of handling bursty workloads with zero data loss. Implemented automatic worker failover, sliding-window rate limiting, and dead-letter queues.
+              </p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-box">
+                <div class="metric-item">
+                  <span class="metric-value">15k+</span>
+                  <span class="metric-label">Tasks / Sec</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-value">&lt;88ms</span>
+                  <span class="metric-label">Avg Latency</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-value">99.9%</span>
+                  <span class="metric-label">Reliability</span>
+                </div>
+              </div>
+
+              <!-- Tech Stack -->
+              <div class="project-tech-stack">
+                <span class="tech-pill">Node.js</span>
+                <span class="tech-pill">Redis BullMQ</span>
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Docker</span>
+                <span class="tech-pill">WebSockets</span>
+              </div>
+
+              <div class="project-card-actions">
+                <a href="https://github.com/pritisnehadas" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span>Source Code</span>
+                </a>
+                <button class="btn btn-sm btn-outline" onclick="triggerTerminalCmd('project 1')">
+                  <span>Run CLI Spec</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2: CodeSphere -->
+          <article class="project-card">
+            <div class="project-media-wrap">
+              <span class="project-category-badge">Real-Time Systems · Sandboxed IDE</span>
+              <img src="./project-codesphere.jpg" alt="CodeSphere Collaborative Web IDE Interface" class="project-img" loading="lazy">
+            </div>
+
+            <div class="project-body">
+              <div class="project-header-row">
+                <h3 class="project-title">CodeSphere — Collaborative IDE & Code Sandbox</h3>
+                <span class="project-year">2024</span>
+              </div>
+
+              <p class="project-problem-text">
+                Engineered a browser-based collaborative programming environment supporting live multi-user editing with operational synchronization and isolated backend Docker runners for executing C++, Python, and JS safely.
+              </p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-box">
+                <div class="metric-item">
+                  <span class="metric-value">&lt;40ms</span>
+                  <span class="metric-label">Sync Latency</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-value">3 Engines</span>
+                  <span class="metric-label">C++ / Py / JS</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-value">100%</span>
+                  <span class="metric-label">Sandboxed</span>
+                </div>
+              </div>
+
+              <!-- Tech Stack -->
+              <div class="project-tech-stack">
+                <span class="tech-pill">TypeScript</span>
+                <span class="tech-pill">Node.js</span>
+                <span class="tech-pill">WebSockets</span>
+                <span class="tech-pill">Docker Containers</span>
+                <span class="tech-pill">Monaco Engine</span>
+              </div>
+
+              <div class="project-card-actions">
+                <a href="https://github.com/pritisnehadas" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span>Source Code</span>
+                </a>
+                <button class="btn btn-sm btn-outline" onclick="triggerTerminalCmd('project 2')">
+                  <span>Run CLI Spec</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3: CampusPulse DEC Academic Hub -->
+          <article class="project-card">
+            <div class="project-media-wrap" style="display: flex; align-items: center; justify-content: center; background: radial-gradient(circle at center, #111a2f, #070c17);">
+              <span class="project-category-badge">Academic Platform · DEC & ASTU</span>
+              <div style="font-family: var(--font-mono); text-align: center; color: var(--accent-cyan); padding: 20px;">
+                <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom: 8px;"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                <div style="font-weight: 700; font-size: 1.1rem; color: #fff;">CampusPulse Portal</div>
+                <div style="font-size: 0.75rem; color: var(--text-muted);">Dhemaji Engineering College Hub</div>
+              </div>
+            </div>
+
+            <div class="project-body">
+              <div class="project-header-row">
+                <h3 class="project-title">CampusPulse — DEC Academic & Resource Hub</h3>
+                <span class="project-year">2024</span>
+              </div>
+
+              <p class="project-problem-text">
+                A centralized portal tailored for engineering students and department faculties at Dhemaji Engineering College (DEC). Features real-time department notices, lab equipment reservations, and prerequisite DAG mapping.
+              </p>
+
+              <!-- Metrics -->
+              <div class="project-metrics-box">
+                <div class="metric-item">
+                  <span class="metric-value">500+</span>
+                  <span class="metric-label">DEC Students</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-value">6 Depts</span>
+                  <span class="metric-label">Coverage</span>
+                </div>
+                <div class="metric-item">
+                  <span class="metric-value">0ms</span>
+                  <span class="metric-label">Cache Delay</span>
+                </div>
+              </div>
+
+              <!-- Tech Stack -->
+              <div class="project-tech-stack">
+                <span class="tech-pill">PostgreSQL</span>
+                <span class="tech-pill">Express.js</span>
+                <span class="tech-pill">REST APIs</span>
+                <span class="tech-pill">Vanilla JS</span>
+                <span class="tech-pill">CSS Grid</span>
+              </div>
+
+              <div class="project-card-actions">
+                <a href="https://github.com/pritisnehadas" target="_blank" rel="noopener noreferrer" class="btn btn-sm btn-secondary">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                  <span>Source Code</span>
+                </a>
+                <button class="btn btn-sm btn-outline" onclick="triggerTerminalCmd('project 3')">
+                  <span>Run CLI Spec</span>
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         INTERACTIVE CS ALGORITHM SANDBOX LAB
+         ====================================================================== -->
+    <section id="algo-lab" aria-labelledby="algo-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            LIVE BROWSER ENGINE
+          </span>
+          <h2 class="section-title" id="algo-heading">Interactive Algorithm Lab</h2>
+          <p class="section-subtitle">
+            Experience real algorithmic execution live in your browser. Watch partition states and step-by-step comparisons rendered in real time.
+          </p>
+        </div>
+
+        <div class="algo-sandbox-container">
+          <div class="algo-controls-bar">
+            <div class="algo-selector-group">
+              <label for="algo-type-select" class="font-mono text-muted" style="font-size: 0.8125rem;">Algorithm:</label>
+              <select id="algo-type-select" class="algo-select">
+                <option value="quicksort">QuickSort (Divide & Conquer)</option>
+                <option value="bubblesort">BubbleSort (Step Inspection)</option>
+                <option value="insertionsort">InsertionSort (In-Place)</option>
+              </select>
+            </div>
+
+            <div class="algo-button-group">
+              <button class="btn btn-sm btn-outline" id="btn-algo-reset">Generate New Array</button>
+              <button class="btn btn-sm btn-primary" id="btn-algo-play">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                <span>Run Visualizer</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Bars Canvas Container -->
+          <div class="algo-canvas-wrapper" id="algo-bars-container" aria-label="Visual sorting array simulation">
+            <!-- Bars rendered via JS -->
+          </div>
+
+          <div class="algo-meta-footer">
+            <div id="algo-status-text">Status: Ready. Click "Run Visualizer" to trace execution.</div>
+            <div id="algo-complexity-badge" class="text-cyan">Time Complexity: O(N log N) | Space: O(log N)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         ACADEMIC BACKGROUND & TIMELINE (Dhemaji Engineering College)
+         ====================================================================== -->
+    <section id="education" aria-labelledby="education-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+            CREDENTIALS & TIMELINE
+          </span>
+          <h2 class="section-title" id="education-heading">Education & Engineering Foundation</h2>
+          <p class="section-subtitle">
+            Formal engineering education at Dhemaji Engineering College, affiliated with Assam Science and Technology University (ASTU).
+          </p>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="timeline-item">
+            <div class="timeline-marker" aria-hidden="true"></div>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-institution">Dhemaji Engineering College (DEC)</h3>
+                  <div class="timeline-degree">Bachelor of Technology (B.Tech) — Computer Science and Engineering</div>
+                  <div class="timeline-location">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                    <span>Dhemaji / Tezpur, Assam, India · Affiliated with ASTU</span>
+                  </div>
+                </div>
+                <div class="timeline-period-badge">2025 — 2029 (Undergraduate)</div>
+              </div>
+
+              <p style="color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.6;">
+                Rigorous four-year engineering curriculum focused on theoretical computer science, systems architecture, practical software engineering laboratories, and collaborative research capstones.
+              </p>
+
+              <div style="margin-top: var(--space-md);">
+                <div class="font-mono text-muted" style="font-size: 0.775rem; text-transform: uppercase; margin-bottom: 6px;">
+                  Key Engineering Coursework:
+                </div>
+                <div class="coursework-grid">
+                  <span class="course-chip">Data Structures & Algorithms</span>
+                  <span class="course-chip">Design & Analysis of Algorithms</span>
+                  <span class="course-chip">Operating Systems & Linux Kernel</span>
+                  <span class="course-chip">Database Management Systems (DBMS)</span>
+                  <span class="course-chip">Computer Networks & Protocols</span>
+                  <span class="course-chip">Object-Oriented Programming (OOP)</span>
+                  <span class="course-chip">Computer Organization & Architecture</span>
+                  <span class="course-chip">Software Engineering & Agile</span>
+                  <span class="course-chip">Theory of Computation</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ======================================================================
+         CONTACT & INQUIRY SECTION
+         ====================================================================== -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            GET IN TOUCH
+          </span>
+          <h2 class="section-title" id="contact-heading">Let's Connect & Collaborate</h2>
+          <p class="section-subtitle">
+            Open to software engineering roles, technical internships, and distributed systems discussions.
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Channels Info -->
+          <div class="contact-card">
+            <div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 6px;">Direct Channels</h3>
+              <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                Feel free to email directly or connect on professional platforms.
+              </p>
+            </div>
+
+            <div class="contact-info-list">
+              <!-- Email Item -->
+              <div class="contact-item">
+                <div class="contact-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                </div>
+                <div class="contact-text-group">
+                  <span class="contact-label">Email Address</span>
+                  <a href="mailto:pritisnehadas2@gmail.com" class="contact-value text-cyan" style="text-decoration: none;">pritisnehadas2@gmail.com</a>
+                </div>
+                <button class="btn-copy-email" id="btn-copy-email-contact" title="Copy email address" aria-label="Copy email address to clipboard">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  <span>Copy</span>
+                </button>
+              </div>
+
+              <!-- LinkedIn Item -->
+              <a href="https://www.linkedin.com/in/pritisneha-das-768924442" target="_blank" rel="noopener noreferrer" class="contact-item">
+                <div class="contact-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                </div>
+                <div class="contact-text-group">
+                  <span class="contact-label">LinkedIn Profile</span>
+                  <span class="contact-value text-primary">in/pritisneha-das-768924442</span>
+                </div>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--text-muted);" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+              </a>
+
+              <!-- Location Item -->
+              <div class="contact-item">
+                <div class="contact-icon-box">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                </div>
+                <div class="contact-text-group">
+                  <span class="contact-label">Location</span>
+                  <span class="contact-value">Tezpur, Assam, India</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Message Dispatch Form -->
+          <div class="contact-card">
+            <div>
+              <h3 style="font-size: 1.3rem; margin-bottom: 6px;">Send a Direct Message</h3>
+              <p style="color: var(--text-secondary); font-size: 0.875rem;">
+                Have an inquiry or project proposal? Send a message directly.
+              </p>
+            </div>
+
+            <form class="contact-form" id="contact-form">
+              <div class="form-group">
+                <label for="contact-name" class="form-label">Your Name</label>
+                <input type="text" id="contact-name" required placeholder="e.g. Alex Morgan" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-email" class="form-label">Your Email</label>
+                <input type="email" id="contact-email" required placeholder="e.g. alex@company.com" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject" class="form-label">Subject</label>
+                <input type="text" id="contact-subject" required placeholder="e.g. Software Engineering Opportunity / Discussion" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message" class="form-label">Message</label>
+                <textarea id="contact-message" required placeholder="Write your message here..." class="form-textarea"></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 4px;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                <span>Transmit Message</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================================================================
+       FOOTER
+       ======================================================================== -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-content">
+      <div class="footer-meta">
+        <div style="font-weight: 700; color: var(--text-primary); font-size: 1rem;">
+          Pritisneha Das <span class="text-cyan">::</span> CS Engineering
+        </div>
+        <div>
+          Dhemaji Engineering College (DEC), Assam · Batch 2025 – 2029
+        </div>
+        <div style="font-size: 0.775rem; color: var(--text-muted); margin-top: 4px;">
+          Built with native HTML5, CSS3, &amp; Vanilla ES6 JavaScript. Zero bloat.
+        </div>
+      </div>
+
+      <div class="footer-shortcuts-legend">
+        <span>Hotkeys:</span>
+        <span><kbd class="key-badge">T</kbd> CLI</span>
+        <span><kbd class="key-badge">P</kbd> Projects</span>
+        <span><kbd class="key-badge">C</kbd> Copy Email</span>
+        <span><kbd class="key-badge">Esc</kbd> Close</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Root -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- ========================================================================
+       VANILLA JAVASCRIPT LOGIC
+       - Background Canvas Interactive Circuit Grid
+       - UNIX CLI Terminal Emulator with complete commands
+       - Live Algorithm Sandbox (QuickSort, BubbleSort, InsertionSort)
+       - Skills Matrix Filter
+       - Clipboard copy & toast notifications
+       - Keyboard shortcuts
+       ======================================================================== -->
+  <script>
+    (function() {
+      'use strict';
+
+      // ----------------------------------------------------------------------
+      // 1. Toast Notification Utility
+      // ----------------------------------------------------------------------
+      function showToast(message, duration = 3000) {
+        const container = document.getElementById('toast-container');
+        if (!container) return;
+        
+        const toast = document.createElement('div');
+        toast.className = 'toast';
+        toast.innerHTML = `
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--accent-cyan);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          <span>${message}</span>
+        `;
+        container.appendChild(toast);
+        
+        requestAnimationFrame(() => {
+          toast.classList.add('show');
+        });
+        
+        setTimeout(() => {
+          toast.classList.remove('show');
+          setTimeout(() => toast.remove(), 300);
+        }, duration);
+      }
+
+      // ----------------------------------------------------------------------
+      // 2. Clipboard Email Copier
+      // ----------------------------------------------------------------------
+      const EMAIL = 'pritisnehadas2@gmail.com';
+      function copyEmailToClipboard() {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(EMAIL).then(() => {
+            showToast('Email copied to clipboard: ' + EMAIL);
+          }).catch(() => {
+            fallbackCopy(EMAIL);
+          });
+        } else {
+          fallbackCopy(EMAIL);
+        }
+      }
+
+      function fallbackCopy(text) {
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.execCommand('copy');
+          showToast('Email copied to clipboard: ' + text);
+        } catch (e) {
+          showToast('Email: ' + text);
+        }
+        document.body.removeChild(textarea);
+      }
+
+      document.getElementById('btn-copy-email-hero')?.addEventListener('click', copyEmailToClipboard);
+      document.getElementById('btn-copy-email-contact')?.addEventListener('click', copyEmailToClipboard);
+
+      // ----------------------------------------------------------------------
+      // 3. Live IST Clock (Tezpur, Assam UTC+5:30)
+      // ----------------------------------------------------------------------
+      function updateLiveClock() {
+        const clockEl = document.getElementById('live-ist-clock');
+        if (!clockEl) return;
+        const now = new Date();
+        const istOptions = {
+          timeZone: 'Asia/Kolkata',
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit',
+          hour12: false
+        };
+        const formatter = new Intl.DateTimeFormat([], istOptions);
+        clockEl.textContent = formatter.format(now) + ' IST';
+      }
+      setInterval(updateLiveClock, 1000);
+      updateLiveClock();
+
+      // ----------------------------------------------------------------------
+      // 4. Interactive Typing Effect in Hero
+      // ----------------------------------------------------------------------
+      const roles = [
+        'Computer Science Engineer',
+        'DEC Batch 2025 – 2029',
+        'Distributed Systems Enthusiast',
+        'Backend & Full-Stack Architect'
+      ];
+      let roleIdx = 0;
+      let charIdx = 0;
+      let isDeleting = false;
+      const typingEl = document.getElementById('typing-text');
+
+      function typeRole() {
+        if (!typingEl) return;
+        const currentRole = roles[roleIdx];
+        
+        if (isDeleting) {
+          typingEl.textContent = currentRole.substring(0, charIdx - 1);
+          charIdx--;
+        } else {
+          typingEl.textContent = currentRole.substring(0, charIdx + 1);
+          charIdx++;
+        }
+
+        let speed = isDeleting ? 30 : 70;
+
+        if (!isDeleting && charIdx === currentRole.length) {
+          speed = 2200; // Pause at full string
+          isDeleting = true;
+        } else if (isDeleting && charIdx === 0) {
+          isDeleting = false;
+          roleIdx = (roleIdx + 1) % roles.length;
+          speed = 400;
+        }
+
+        setTimeout(typeRole, speed);
+      }
+      setTimeout(typeRole, 600);
+
+      // ----------------------------------------------------------------------
+      // 5. Interactive Circuit / Particle Canvas Background
+      // ----------------------------------------------------------------------
+      const canvas = document.getElementById('bg-canvas');
+      if (canvas && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const ctx = canvas.getContext('2d');
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        window.addEventListener('resize', () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const particles = [];
+        const particleCount = Math.min(Math.floor((width * height) / 22000), 55);
+
+        for (let i = 0; i < particleCount; i++) {
+          particles.push({
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.45,
+            vy: (Math.random() - 0.5) * 0.45,
+            radius: Math.random() * 1.5 + 1
+          });
+        }
+
+        function drawCanvas() {
+          ctx.clearRect(0, 0, width, height);
+
+          // Draw connections
+          ctx.lineWidth = 0.5;
+          for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+              const dx = particles[i].x - particles[j].x;
+              const dy = particles[i].y - particles[j].y;
+              const dist = Math.sqrt(dx * dx + dy * dy);
+
+              if (dist < 130) {
+                const alpha = (1 - dist / 130) * 0.22;
+                ctx.strokeStyle = `rgba(0, 242, 254, ${alpha})`;
+                ctx.beginPath();
+                ctx.moveTo(particles[i].x, particles[i].y);
+                ctx.lineTo(particles[j].x, particles[j].y);
+                ctx.stroke();
+              }
+            }
+          }
+
+          // Draw particles
+          for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+            p.x += p.vx;
+            p.y += p.vy;
+
+            if (p.x < 0) p.x = width;
+            if (p.x > width) p.x = 0;
+            if (p.y < 0) p.y = height;
+            if (p.y > height) p.y = 0;
+
+            ctx.fillStyle = 'rgba(0, 242, 254, 0.5)';
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          requestAnimationFrame(drawCanvas);
+        }
+        drawCanvas();
+      }
+
+      // ----------------------------------------------------------------------
+      // 6. Interactive UNIX Terminal / CLI Logic
+      // ----------------------------------------------------------------------
+      const terminalInput = document.getElementById('terminal-input');
+      const terminalOutput = document.getElementById('terminal-output');
+      const terminalScreen = document.getElementById('terminal-screen');
+      const cmdHistory = [];
+      let historyIdx = -1;
+
+      const COMMANDS = {
+        help: () => `
+Available system commands:
+  • <span class="text-cyan">about</span>       : Overview of Pritisneha Das & background
+  • <span class="text-cyan">skills</span>      : List technical competencies & languages
+  • <span class="text-cyan">projects</span>    : Inspect featured engineering projects
+  • <span class="text-cyan">education</span>   : View academic credentials at DEC
+  • <span class="text-cyan">contact</span>     : Display direct contact channels
+  • <span class="text-cyan">neofetch</span>    : System & engineer telemetry banner
+  • <span class="text-cyan">clear</span>       : Wipe terminal output buffer
+  • <span class="text-cyan">date</span>        : Current local timestamp (IST)
+  • <span class="text-cyan">whoami</span>      : Active visitor session identity
+`,
+        about: () => `
+<span class="text-green">[PROFILE RECORD]</span>
+Name        : Pritisneha Das
+Role        : Computer Science Engineer (B.Tech 2025 – 2029)
+College     : Dhemaji Engineering College (DEC), Assam
+Location    : Tezpur, Assam, India
+Interests   : Distributed Systems, High-Concurrency Queues, Backend Engineering, Algorithmic Optimization.
+`,
+        skills: () => `
+<span class="text-green">[TECHNICAL SPECIFICATIONS]</span>
+• Languages     : C, C++, Python, JavaScript (ES6+), TypeScript, SQL, Bash
+• CS Foundations: Data Structures, Algorithms, OS, Networks (TCP/IP), DBMS
+• Backend/Data  : Node.js, Express, Redis, PostgreSQL, MongoDB, WebSockets
+• Toolchain     : Docker, Git & GitHub, Linux/Unix, Postman, CI/CD
+`,
+        projects: () => `
+<span class="text-green">[FEATURED REPOSITORIES]</span>
+[1] NexusFlow  - Distributed Task & Event Pipeline (Redis, Node.js, Postgres)
+[2] CodeSphere - Real-time Collaborative IDE & Docker Sandbox (WebSockets, TypeScript)
+[3] CampusPulse- DEC Academic & Resource Optimization Hub (Full Stack Web)
+Type <span class="text-cyan">'project 1'</span>, <span class="text-cyan">'project 2'</span> or <span class="text-cyan">'project 3'</span> for detailed architecture breakdown.
+`,
+        'project 1': () => `
+<span class="text-cyan">NexusFlow Distributed Pipeline</span>:
+• Problem   : High-volume asynchronous background jobs risking broker bottlenecks.
+• Solution  : Distributed worker pool with token bucket rate limiting and dead-letter queues.
+• Latency   : ~88ms end-to-end; 15,000+ tasks/sec burst capability.
+`,
+        'project 2': () => `
+<span class="text-cyan">CodeSphere Collaborative Sandboxed IDE</span>:
+• Problem   : Latency and execution hazards in collaborative code evaluation.
+• Solution  : Operational synchronization over WebSockets; isolated container sandboxes.
+• Support   : C++, Python, JavaScript runtimes with runtime memory guards.
+`,
+        'project 3': () => `
+<span class="text-cyan">CampusPulse DEC Hub</span>:
+• Problem   : Disjoint academic scheduling and notice boards at DEC.
+• Solution  : Centralized university service with prerequisite DAG tree visualizer.
+• Target    : Dhemaji Engineering College student body & faculties.
+`,
+        education: () => `
+<span class="text-green">[ACADEMIC RECORD]</span>
+Degree      : Bachelor of Technology (B.Tech)
+Major       : Computer Science and Engineering (2025 – 2029)
+Institution : Dhemaji Engineering College (DEC)
+University  : Assam Science and Technology University (ASTU)
+Location    : Assam, India
+`,
+        contact: () => `
+<span class="text-green">[DIRECT CHANNELS]</span>
+Email       : <a href="mailto:pritisnehadas2@gmail.com" class="text-cyan" style="text-decoration: underline;">pritisnehadas2@gmail.com</a>
+LinkedIn    : <a href="https://www.linkedin.com/in/pritisneha-das-768924442" target="_blank" class="text-cyan" style="text-decoration: underline;">in/pritisneha-das-768924442</a>
+Location    : Tezpur, Assam, India
+`,
+        neofetch: () => `
+<pre style="color: var(--accent-cyan); font-size: 0.775rem; line-height: 1.3;">
+       /\\         <b>pritisneha@dec-cs</b>
+      /  \\        -----------------
+     /\\   \\       <b>OS</b>: Linux x86_64 / Web Kernel 2025
+    /      \\      <b>Host</b>: Dhemaji Engineering College (DEC)
+   /   ,,   \\     <b>Major</b>: Computer Science & Engineering
+  /   |  |  -\\    <b>Batch</b>: Academic Batch (2025 – 2029)
+ /_-''    ''-_\\   <b>Shell</b>: zsh 5.9 (CS Architecture)
+                  <b>Terminal</b>: DEC-Console-v2.5
+                  <b>Status</b>: Open for Engineering Roles
+</pre>
+`,
+        date: () => new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }) + ' (IST)',
+        whoami: () => 'guest_recruiter@web-client (Permission: READ-ONLY)',
+        clear: () => {
+          terminalOutput.innerHTML = '';
+          return null;
+        }
+      };
+
+      function handleCommand(cmdRaw) {
+        const cmd = cmdRaw.trim().toLowerCase();
+        if (!cmd) return;
+
+        // Print input line
+        const inputLine = document.createElement('div');
+        inputLine.className = 'terminal-line';
+        inputLine.innerHTML = `<span class="terminal-prompt">pritisneha@dec-cs:~$</span> <span class="terminal-cmd">${escapeHTML(cmdRaw)}</span>`;
+        terminalOutput.appendChild(inputLine);
+
+        // Process response
+        let res;
+        if (COMMANDS[cmd]) {
+          res = COMMANDS[cmd]();
+        } else {
+          res = `<span class="terminal-response error">command not found: '${escapeHTML(cmd)}'. Type <span class="text-green">'help'</span> for valid commands.</span>`;
+        }
+
+        if (res !== null) {
+          const resLine = document.createElement('div');
+          resLine.className = 'terminal-line terminal-response';
+          resLine.innerHTML = res;
+          terminalOutput.appendChild(resLine);
+        }
+
+        // Scroll to bottom
+        terminalScreen.scrollTop = terminalScreen.scrollHeight;
+      }
+
+      function escapeHTML(str) {
+        return str.replace(/[&<>'"]/g, 
+          tag => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', "'": '&#39;', '"': '&quot;' }[tag] || tag)
+        );
+      }
+
+      // Input listener
+      terminalInput?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const val = terminalInput.value;
+          if (val.trim()) {
+            cmdHistory.push(val);
+            historyIdx = cmdHistory.length;
+            handleCommand(val);
+            terminalInput.value = '';
+          }
+        } else if (e.key === 'ArrowUp') {
+          if (historyIdx > 0) {
+            historyIdx--;
+            terminalInput.value = cmdHistory[historyIdx] || '';
+          }
+          e.preventDefault();
+        } else if (e.key === 'ArrowDown') {
+          if (historyIdx < cmdHistory.length - 1) {
+            historyIdx++;
+            terminalInput.value = cmdHistory[historyIdx] || '';
+          } else {
+            historyIdx = cmdHistory.length;
+            terminalInput.value = '';
+          }
+          e.preventDefault();
+        }
+      });
+
+      // Quick command chips
+      document.querySelectorAll('.cmd-chip').forEach(chip => {
+        chip.addEventListener('click', () => {
+          const cmd = chip.getAttribute('data-cmd');
+          if (cmd) {
+            if (terminalInput) terminalInput.value = cmd;
+            handleCommand(cmd);
+          }
+        });
+      });
+
+      // Global window function for project spec triggers
+      window.triggerTerminalCmd = function(cmd) {
+        const termSection = document.getElementById('cli-terminal');
+        termSection?.scrollIntoView({ behavior: 'smooth' });
+        setTimeout(() => {
+          terminalInput?.focus();
+          handleCommand(cmd);
+        }, 400);
+      };
+
+      // Toggle terminal shortcut button
+      document.getElementById('btn-toggle-terminal-nav')?.addEventListener('click', () => {
+        const term = document.getElementById('cli-terminal');
+        term?.scrollIntoView({ behavior: 'smooth' });
+        terminalInput?.focus();
+      });
+
+      document.getElementById('btn-quick-terminal')?.addEventListener('click', () => {
+        const term = document.getElementById('cli-terminal');
+        term?.scrollIntoView({ behavior: 'smooth' });
+        terminalInput?.focus();
+      });
+
+      // ----------------------------------------------------------------------
+      // 7. Interactive Algorithm Sandbox (QuickSort, BubbleSort, InsertionSort)
+      // ----------------------------------------------------------------------
+      const algoContainer = document.getElementById('algo-bars-container');
+      const algoStatusText = document.getElementById('algo-status-text');
+      const algoComplexityBadge = document.getElementById('algo-complexity-badge');
+      const algoSelect = document.getElementById('algo-type-select');
+      const btnAlgoPlay = document.getElementById('btn-algo-play');
+      const btnAlgoReset = document.getElementById('btn-algo-reset');
+
+      let currentArray = [];
+      let isSorting = false;
+      const ARRAY_SIZE = 24;
+
+      function generateRandomArray() {
+        if (isSorting) return;
+        currentArray = [];
+        for (let i = 0; i < ARRAY_SIZE; i++) {
+          currentArray.push(Math.floor(Math.random() * 160) + 25);
+        }
+        renderBars();
+        if (algoStatusText) algoStatusText.textContent = `Status: Generated fresh array of ${ARRAY_SIZE} elements.`;
+      }
+
+      function renderBars(activeIndices = [], sortedIndices = []) {
+        if (!algoContainer) return;
+        algoContainer.innerHTML = '';
+        currentArray.forEach((val, idx) => {
+          const bar = document.createElement('div');
+          bar.className = 'algo-bar';
+          bar.style.height = `${val}px`;
+          if (activeIndices.includes(idx)) {
+            bar.classList.add('active');
+          }
+          if (sortedIndices.includes(idx)) {
+            bar.classList.add('sorted');
+          }
+          algoContainer.appendChild(bar);
+        });
+      }
+
+      const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+      async function runBubbleSort() {
+        const n = currentArray.length;
+        const sorted = [];
+        for (let i = 0; i < n; i++) {
+          for (let j = 0; j < n - i - 1; j++) {
+            renderBars([j, j + 1], sorted);
+            await sleep(40);
+            if (currentArray[j] > currentArray[j + 1]) {
+              const temp = currentArray[j];
+              currentArray[j] = currentArray[j + 1];
+              currentArray[j + 1] = temp;
+              renderBars([j, j + 1], sorted);
+              await sleep(30);
+            }
+          }
+          sorted.push(n - i - 1);
+        }
+        renderBars([], Array.from({length: n}, (_, i) => i));
+      }
+
+      async function runQuickSortHelper(low, high) {
+        if (low < high) {
+          const pi = await partition(low, high);
+          await runQuickSortHelper(low, pi - 1);
+          await runQuickSortHelper(pi + 1, high);
+        }
+      }
+
+      async function partition(low, high) {
+        const pivot = currentArray[high];
+        let i = low - 1;
+        for (let j = low; j < high; j++) {
+          renderBars([j, high]);
+          await sleep(40);
+          if (currentArray[j] < pivot) {
+            i++;
+            const t = currentArray[i];
+            currentArray[i] = currentArray[j];
+            currentArray[j] = t;
+            renderBars([i, j]);
+            await sleep(30);
+          }
+        }
+        const t = currentArray[i + 1];
+        currentArray[i + 1] = currentArray[high];
+        currentArray[high] = t;
+        renderBars([i + 1]);
+        await sleep(40);
+        return i + 1;
+      }
+
+      async function runInsertionSort() {
+        const n = currentArray.length;
+        for (let i = 1; i < n; i++) {
+          let key = currentArray[i];
+          let j = i - 1;
+          renderBars([i]);
+          await sleep(40);
+          while (j >= 0 && currentArray[j] > key) {
+            currentArray[j + 1] = currentArray[j];
+            renderBars([j, j + 1]);
+            await sleep(30);
+            j = j - 1;
+          }
+          currentArray[j + 1] = key;
+          renderBars([j + 1]);
+          await sleep(30);
+        }
+        renderBars([], Array.from({length: n}, (_, i) => i));
+      }
+
+      btnAlgoPlay?.addEventListener('click', async () => {
+        if (isSorting) return;
+        isSorting = true;
+        btnAlgoPlay.disabled = true;
+        btnAlgoReset.disabled = true;
+
+        const algo = algoSelect ? algoSelect.value : 'quicksort';
+        if (algoStatusText) algoStatusText.textContent = `Status: Running ${algo.toUpperCase()}...`;
+
+        if (algo === 'quicksort') {
+          if (algoComplexityBadge) algoComplexityBadge.textContent = 'Time: O(N log N) avg | Space: O(log N)';
+          await runQuickSortHelper(0, currentArray.length - 1);
+          renderBars([], Array.from({length: currentArray.length}, (_, i) => i));
+        } else if (algo === 'bubblesort') {
+          if (algoComplexityBadge) algoComplexityBadge.textContent = 'Time: O(N²) worst | Space: O(1)';
+          await runBubbleSort();
+        } else if (algo === 'insertionsort') {
+          if (algoComplexityBadge) algoComplexityBadge.textContent = 'Time: O(N²) worst, O(N) best | Space: O(1)';
+          await runInsertionSort();
+        }
+
+        if (algoStatusText) algoStatusText.textContent = `Status: Completed. All ${currentArray.length} elements ordered.`;
+        isSorting = false;
+        btnAlgoPlay.disabled = false;
+        btnAlgoReset.disabled = false;
+        showToast('Algorithm execution completed successfully!');
+      });
+
+      btnAlgoReset?.addEventListener('click', generateRandomArray);
+      algoSelect?.addEventListener('change', () => {
+        const algo = algoSelect.value;
+        if (algo === 'quicksort') {
+          algoComplexityBadge.textContent = 'Time: O(N log N) avg | Space: O(log N)';
+        } else if (algo === 'bubblesort') {
+          algoComplexityBadge.textContent = 'Time: O(N²) worst | Space: O(1)';
+        } else {
+          algoComplexityBadge.textContent = 'Time: O(N²) worst, O(N) best | Space: O(1)';
+        }
+      });
+
+      generateRandomArray();
+
+      // ----------------------------------------------------------------------
+      // 8. Skills Category Tabs Filter
+      // ----------------------------------------------------------------------
+      const filterBtns = document.querySelectorAll('.skills-filter-nav .filter-btn');
+      const skillCards = document.querySelectorAll('.skills-grid .skill-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-selected', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-selected', 'true');
+
+          const category = btn.getAttribute('data-category');
+          skillCards.forEach(card => {
+            if (category === 'all' || card.getAttribute('data-domain') === category) {
+              card.style.display = 'flex';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // ----------------------------------------------------------------------
+      // 9. Mobile Navigation Drawer Toggle
+      // ----------------------------------------------------------------------
+      const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+      const navMenu = document.getElementById('nav-menu');
+
+      mobileNavToggle?.addEventListener('click', () => {
+        const isOpen = navMenu?.classList.toggle('open');
+        mobileNavToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+
+      // Close mobile menu on link click
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu?.classList.remove('open');
+          mobileNavToggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+
+      // ----------------------------------------------------------------------
+      // 10. Contact Form Transmission
+      // ----------------------------------------------------------------------
+      const contactForm = document.getElementById('contact-form');
+      contactForm?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('contact-name')?.value || '';
+        const email = document.getElementById('contact-email')?.value || '';
+        const subject = document.getElementById('contact-subject')?.value || '';
+        const msg = document.getElementById('contact-message')?.value || '';
+
+        // Generate pre-filled mailto fallback link
+        const mailtoUri = `mailto:pritisnehadas2@gmail.com?subject=${encodeURIComponent(subject + ' - from ' + name)}&body=${encodeURIComponent(msg + '\n\nSender Email: ' + email)}`;
+        
+        showToast('Preparing mail client for: pritisnehadas2@gmail.com', 4000);
+        setTimeout(() => {
+          window.location.href = mailtoUri;
+        }, 700);
+        contactForm.reset();
+      });
+
+      // ----------------------------------------------------------------------
+      // 11. Keyboard Shortcuts Global Listener
+      // ----------------------------------------------------------------------
+      window.addEventListener('keydown', (e) => {
+        // Ignore if user is inside a form input or textarea
+        if (['INPUT', 'TEXTAREA', 'SELECT'].includes(e.target.tagName)) {
+          if (e.key === 'Escape') {
+            e.target.blur();
+          }
+          return;
+        }
+
+        if (e.key === 't' || e.key === 'T') {
+          e.preventDefault();
+          const term = document.getElementById('cli-terminal');
+          term?.scrollIntoView({ behavior: 'smooth' });
+          terminalInput?.focus();
+          showToast('Focused Interactive Terminal (type "help")');
+        } else if (e.key === 'p' || e.key === 'P') {
+          e.preventDefault();
+          document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+        } else if (e.key === 'c' || e.key === 'C') {
+          e.preventDefault();
+          copyEmailToClipboard();
+        } else if (e.key === 'Escape') {
+          navMenu?.classList.remove('open');
+          mobileNavToggle?.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+    })();
+  </script>
+</body>
+</html>
